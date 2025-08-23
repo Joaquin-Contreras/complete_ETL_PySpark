@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-server
+    environment:
+      MYSQL_ROOT_PASSWORD: Nicolasa5002
+      MYSQL_DATABASE: tmdb_database
+    ports:
+      - "3306:3306"
+    networks:
+      - spark-mysql-net
+    volumes:
+      - ./mysql_conf/my.cnf:/etc/mysql/conf.d/my.cnf:ro    
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  spark:
+    depends_on:
+      - mysql
+    command: ["/app/wait-for-it.sh", "mysql", "3306", "--", "spark-submit", "--master", "local[*]", "spark_jobs/run_pipeline.py"]
+    build: .
+    container_name: spark-app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: tmdb_database
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Nicolasa5002
+      MYSQL_JDBC_URL: jdbc:mysql://mysql:3306/tmdb_database?user=root&password=Nicolasa5002enabledTLSProtocols=TLSv1.2&connectTimeout=30000&socketTimeout=60000&autoReconnect=true
+    networks:
+      - spark-mysql-net
+
+networks:
+  spark-mysql-net:
+    driver: bridge

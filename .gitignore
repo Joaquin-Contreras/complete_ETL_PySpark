@@ -1,0 +1,9 @@
+venv/
+API_TESTS/
+.env
+target/
+logs/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
