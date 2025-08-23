@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-API_KEY = os.getenv("API_KEY")  
+API_KEY = "57664ec217026f68448888f7f3f4f07e" # My API Key, you can use your own by creating a free account at https://www.themoviedb.org/
 BASE_URL = "https://api.themoviedb.org/3"
 
 RAW_DIR = "data/raw"
