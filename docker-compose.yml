@@ -5,7 +5,7 @@ services:
     image: mysql:8.0
     container_name: mysql-server
     environment:
-      MYSQL_ROOT_PASSWORD: Nicolasa5002
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: tmdb_database
     ports:
       - "3306:3306"
@@ -25,9 +25,9 @@ services:
       MYSQL_HOST: mysql
       MYSQL_PORT: 3306
       MYSQL_DATABASE: tmdb_database
-      MYSQL_USER: root
-      MYSQL_PASSWORD: Nicolasa5002
-      MYSQL_JDBC_URL: jdbc:mysql://mysql:3306/tmdb_database?user=root&password=Nicolasa5002enabledTLSProtocols=TLSv1.2&connectTimeout=30000&socketTimeout=60000&autoReconnect=true
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_JDBC_URL: jdbc:mysql://mysql:3306/tmdb_database?user=${MYSQL_USER}&password=${MYSQL_PASSWORD}&2enabledTLSProtocols=TLSv1.2&connectTimeout=30000&socketTimeout=60000&autoReconnect=true
     networks:
       - spark-mysql-net
 
