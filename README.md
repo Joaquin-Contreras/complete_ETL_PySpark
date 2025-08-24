@@ -8,11 +8,8 @@ Goals and scope:
 - Data processing, ETL pipeline, schema design, API exposure.
 
 Project diagram:
-<img width="1459" height="582" alt="image" src="https://github.com/user-attachments/assets/bf37f55b-022a-4f3a-88e6-4471c0a1c1fe" />
+<img width="1457" height="598" alt="image" src="https://github.com/user-attachments/assets/56479228-bc20-41d9-9da3-3d1954e496da" />
 
-
-## Architecture & Data Flow
-<img width="988" height="208" alt="image" src="https://github.com/user-attachments/assets/d0c43883-bc86-46ab-9f28-6635370478aa" />
 
 ## Database Design
 
